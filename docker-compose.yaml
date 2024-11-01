@@ -5,12 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
+      - ./.docker/php/timezone.ini:/usr/local/etc/php/conf.d/timezone.ini
       - ./app:/var/www/html
 
   apache-httpd:
     build:
       context: .
-      dockerfile: ./apache/Dockerfile
+      dockerfile: ./.docker/apache/Dockerfile
     volumes:
       - ./app:/var/www/html
     ports:
